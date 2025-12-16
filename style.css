@@ -1,0 +1,333 @@
+:root {
+    --bg-color: #0a0a0a;       /* Deep Charcoal */
+    --text-main: #ededed;      /* Off-white */
+    --text-muted: #888888;     /* Muted Grey */
+    --accent: #D9381E;         /* Hanko Stamp Red - Subtle pop */
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Changed from overflow: hidden to allow scrolling */
+    overflow-y: auto;   /* Added to allow vertical scrolling */
+}
+
+/* NAVIGATION */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+.blink {
+    animation: blinker 1.5s linear infinite;
+    color: var(--accent);
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
+
+/* HERO SECTION */
+.hero-container {
+    min-height: calc(100vh - 140px); /* Adjusted to account for nav and footer height approx */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spreads text and image apart */
+    padding: 0 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content-wrapper {
+    max-width: 600px;
+    z-index: 10; /* Ensures text sits above any image fade */
+}
+
+.headline {
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--text-muted); /* Making part of the text subtle creates depth */
+}
+
+.sub-headline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 400px;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+}
+
+/* BUTTONS */
+.cta-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+}
+
+.btn.primary:hover {
+    background-color: var(--text-muted);
+}
+
+.btn.secondary {
+    border: 1px solid var(--text-muted);
+    color: var(--text-main);
+}
+
+.btn.secondary:hover {
+    border-color: var(--text-main);
+}
+
+/* PHOTO TREATMENT (The "Vibe Code") */
+.visual-wrapper {
+    position: relative;
+    height: 600px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This filter chain creates the "Noir" look */
+    filter: grayscale(100%) contrast(1.2) brightness(0.9);
+    mix-blend-mode: luminosity; /* Helps blend if you had a background texture */
+}
+
+/* This gradient overlay fades the bottom of the image into the background */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, transparent, var(--bg-color));
+}
+
+/* FOOTER */
+.footer-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .headline { font-size: 3rem; }
+    .hero-container { flex-direction: column-reverse; justify-content: center; gap: 2rem; }
+    .visual-wrapper { height: 300px; width: 100%; }
+    .content-wrapper { text-align: left; }
+    .sub-headline { border-left: none; padding-left: 0; border-top: 2px solid var(--accent); padding-top: 1rem; }
+}
+
+/* SYSTEMS SECTION */
+.systems-container {
+    padding: 6rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    border-top: 1px solid #1a1a1a; /* Subtle divider */
+}
+
+.section-header {
+    margin-bottom: 4rem;
+}
+
+.mono-label {
+    font-family: var(--font-mono);
+    color: var(--accent);
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.systems-container h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+/* PROJECT CARD */
+.project-card {
+    display: grid;
+    /* Change from 1fr 1fr to give text more width and constrain visual */
+    grid-template-columns: 1.2fr 1fr;
+    /* Reduce gap from 4rem to 3rem for a tighter feel */
+    gap: 3rem;
+    background: #0f0f0f;
+    padding: 3rem;
+    border: 1px solid #1a1a1a;
+    transition: transform 0.3s ease;
+    /* IMPORTANT: Aligns content to top so text doesn't float */
+    align-items: start;
+}
+
+.project-card:hover {
+    border-color: #333;
+}
+
+.project-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.project-desc {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 400px;
+}
+
+.tech-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+}
+
+.tech-list li {
+    background: #1a1a1a;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+}
+
+.project-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.btn.small {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.8rem;
+}
+
+.link-text {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.link-text:hover {
+    color: var(--text-main);
+    border-bottom-color: var(--text-main);
+}
+
+/* PROJECT VISUAL CONTAINER */
+.project-visual {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid #222;
+    /* THE BIG FIX: Cap the height. Adjust this value (e.g., 500px, 600px) to taste. */
+    max-height: 550px;
+    width: 100%;
+}
+
+.visual-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.app-shot {
+    width: 100%;
+    height: 100%;
+    /* 'cover' ensures it fills the box without stretching */
+    object-fit: cover;
+    /* Ensures the top of your UI (logo, nav) is always visible */
+    object-position: top center;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: grayscale(20%);
+}
+
+/* Hover Effect: Zoom in slightly and brighten */
+.project-visual:hover .app-shot {
+    transform: scale(1.03);
+    filter: grayscale(0%);
+}
+
+.visual-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.visual-overlay span {
+    color: #fff;
+    font-family: var(--font-mono);
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    background: #000;
+}
+
+.project-visual:hover .visual-overlay {
+    opacity: 1;
+}
+
+/* Mobile tweak for the new section */
+@media (max-width: 768px) {
+    .project-card { grid-template-columns: 1fr; padding: 1.5rem; }
+}
