@@ -44,14 +44,16 @@ body {
     50% { opacity: 0; }
 }
 
-/* HERO SECTION */
+/* HERO SECTION - TIGHTENED */
 .hero-container {
-    min-height: calc(100vh - 140px); /* Adjusted to account for nav and footer height approx */
+    /* Changed from calc(100vh - 140px) to 80vh. 
+       This allows the next section to appear "above the fold" */
+    min-height: 80vh; 
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Spreads text and image apart */
-    padding: 0 3rem;
-    max-width: 1400px;
+    justify-content: space-between;
+    padding: 2rem 3rem; /* Added top/bottom padding to breathe */
+    max-width: 1200px; /* Reduced from 1400px to keep text/image closer */
     margin: 0 auto;
     width: 100%;
 }
@@ -119,8 +121,8 @@ body {
 /* PHOTO TREATMENT (The "Vibe Code") */
 .visual-wrapper {
     position: relative;
-    height: 600px;
-    width: 500px;
+    height: 500px; /* Reduced from 600px */
+    width: 400px;  /* Reduced from 500px for better proportions */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -173,14 +175,14 @@ body {
 
 /* SYSTEMS SECTION */
 .systems-container {
-    padding: 6rem 3rem;
-    max-width: 1400px;
+    padding: 3rem 3rem; /* Reduced top padding from 6rem to 3rem */
+    max-width: 1200px; /* Match the hero max-width */
     margin: 0 auto;
     border-top: 1px solid #1a1a1a; /* Subtle divider */
 }
 
 .section-header {
-    margin-bottom: 4rem;
+    margin-bottom: 1.5rem; /* Tightens the title to the card */
 }
 
 .mono-label {
