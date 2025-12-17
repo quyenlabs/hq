@@ -165,13 +165,8 @@ body {
 }
 
 /* MOBILE RESPONSIVENESS */
-@media (max-width: 768px) {
-    .headline { font-size: 3rem; }
-    .hero-container { flex-direction: column-reverse; justify-content: center; gap: 2rem; }
-    .visual-wrapper { height: 300px; width: 100%; }
-    .content-wrapper { text-align: left; }
-    .sub-headline { border-left: none; padding-left: 0; border-top: 2px solid var(--accent); padding-top: 1rem; }
-}
+/* (This block was previously here, but is now replaced by the refined block at the bottom. 
+   Removing this duplicate/older block to avoid conflicts and keep the file clean.) */
 
 /* SYSTEMS SECTION */
 .systems-container {
@@ -329,7 +324,49 @@ body {
     opacity: 1;
 }
 
-/* Mobile tweak for the new section */
+/* MOBILE RESPONSIVENESS - REFINED */
 @media (max-width: 768px) {
-    .project-card { grid-template-columns: 1fr; padding: 1.5rem; }
+    /* 1. Tame the headline size */
+    .headline { 
+        font-size: 3rem; /* Down from 5rem */
+        line-height: 1.1;
+    } 
+    
+    /* 2. Allow the Hero to stack vertically */
+    .hero-container { 
+        flex-direction: column-reverse; 
+        justify-content: center; 
+        gap: 3rem; 
+        padding: 4rem 1.5rem; /* More top padding, tighter side padding */
+        min-height: auto; 
+    }
+
+    /* 3. Resize the photo to look good on phone screens */
+    .visual-wrapper { 
+        height: 350px; 
+        width: 100%; 
+        max-width: 320px; 
+    }
+
+    /* 4. Align text to left for readability */
+    .content-wrapper { text-align: left; }
+    
+    .sub-headline { 
+        border-left: none; 
+        padding-left: 0; 
+        border-top: 2px solid var(--accent); 
+        padding-top: 1rem; 
+        font-size: 1rem;
+    }
+
+    /* 5. Fix the Systems Card layout for mobile */
+    .project-card { 
+        grid-template-columns: 1fr; 
+        padding: 1.5rem; 
+        gap: 2rem;
+    }
+
+    .systems-container {
+        padding: 3rem 1.5rem; 
+    }
 }
