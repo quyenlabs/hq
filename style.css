@@ -319,37 +319,30 @@ body {
     opacity: 1;
 }
 
-/* MOBILE RESPONSIVENESS - REFINED v2 */
+/* MOBILE RESPONSIVENESS - FINAL POLISH */
 @media (max-width: 768px) {
     
-    /* --- FIX 1: THE HEADER COLLISION --- */
-    /* Stack the logo and status vertically so they don't overlap */
+    /* 1. HEADER FIX: Stack the Logo and Name vertically */
     .nav-bar {
         flex-direction: column;
-        align-items: center; /* Center them */
-        gap: 0.8rem;         /* Space between Logo and Status */
-        text-align: center;  /* Ensure text is centered */
-        padding: 1.5rem;     /* Reduce padding slightly */
+        align-items: center; 
+        gap: 1rem;         /* Space between Logo and Name */
+        text-align: center;
+        padding: 1.5rem;   
     }
 
-    /* Ensure the blinking cursor stays next to the logo */
+    /* Keep the blinking cursor attached to the logo */
     .logo {
         display: inline-block; 
         white-space: nowrap;
     }
 
-    /* --- FIX 2: THE FRIED ARROW --- */
-    /* Force buttons to keep text on one line (no wrapping) */
+    /* 2. BUTTON FIX: Stop the arrow from breaking to a new line */
     .btn {
         white-space: nowrap; 
     }
     
-    /* Optional: slightly reduce button side padding on mobile if needed */
-    .btn.small {
-        padding: 0.8rem 1.2rem; 
-    }
-
-    /* --- EXISTING MOBILE STYLES (KEPT) --- */
+    /* 3. HERO & LAYOUT FIXES (Existing) */
     .headline { 
         font-size: 3rem;
         line-height: 1.1;
