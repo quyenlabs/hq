@@ -20,8 +20,8 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; /* Changed from overflow: hidden to allow scrolling */
-    overflow-y: auto;   /* Added to allow vertical scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* NAVIGATION */
@@ -46,21 +46,19 @@ body {
 
 /* HERO SECTION - TIGHTENED */
 .hero-container {
-    /* Changed from calc(100vh - 140px) to 80vh. 
-       This allows the next section to appear "above the fold" */
     min-height: 80vh; 
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 3rem; /* Added top/bottom padding to breathe */
-    max-width: 1200px; /* Reduced from 1400px to keep text/image closer */
+    padding: 2rem 3rem;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
 
 .content-wrapper {
     max-width: 600px;
-    z-index: 10; /* Ensures text sits above any image fade */
+    z-index: 10;
 }
 
 .headline {
@@ -72,7 +70,7 @@ body {
 }
 
 .highlight {
-    color: var(--text-muted); /* Making part of the text subtle creates depth */
+    color: var(--text-muted);
 }
 
 .sub-headline {
@@ -118,11 +116,11 @@ body {
     border-color: var(--text-main);
 }
 
-/* PHOTO TREATMENT (The "Vibe Code") */
+/* PHOTO TREATMENT */
 .visual-wrapper {
     position: relative;
-    height: 500px; /* Reduced from 600px */
-    width: 400px;  /* Reduced from 500px for better proportions */
+    height: 500px;
+    width: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -139,12 +137,10 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* This filter chain creates the "Noir" look */
     filter: grayscale(100%) contrast(1.2) brightness(0.9);
-    mix-blend-mode: luminosity; /* Helps blend if you had a background texture */
+    mix-blend-mode: luminosity;
 }
 
-/* This gradient overlay fades the bottom of the image into the background */
 .overlay {
     position: absolute;
     bottom: 0;
@@ -164,20 +160,26 @@ body {
     color: var(--text-muted);
 }
 
-/* MOBILE RESPONSIVENESS */
-/* (This block was previously here, but is now replaced by the refined block at the bottom. 
-   Removing this duplicate/older block to avoid conflicts and keep the file clean.) */
+.social-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--text-main);
+}
 
 /* SYSTEMS SECTION */
 .systems-container {
-    padding: 3rem 3rem; /* Reduced top padding from 6rem to 3rem */
-    max-width: 1200px; /* Match the hero max-width */
+    padding: 3rem 3rem;
+    max-width: 1200px;
     margin: 0 auto;
-    border-top: 1px solid #1a1a1a; /* Subtle divider */
+    border-top: 1px solid #1a1a1a;
 }
 
 .section-header {
-    margin-bottom: 1.5rem; /* Tightens the title to the card */
+    margin-bottom: 1.5rem;
 }
 
 .mono-label {
@@ -196,15 +198,12 @@ body {
 /* PROJECT CARD */
 .project-card {
     display: grid;
-    /* Change from 1fr 1fr to give text more width and constrain visual */
     grid-template-columns: 1.2fr 1fr;
-    /* Reduce gap from 4rem to 3rem for a tighter feel */
     gap: 3rem;
     background: #0f0f0f;
     padding: 3rem;
     border: 1px solid #1a1a1a;
     transition: transform 0.3s ease;
-    /* IMPORTANT: Aligns content to top so text doesn't float */
     align-items: start;
 }
 
@@ -270,7 +269,6 @@ body {
     overflow: hidden;
     border-radius: 4px;
     border: 1px solid #222;
-    /* THE BIG FIX: Cap the height. Adjust this value (e.g., 500px, 600px) to taste. */
     max-height: 550px;
     width: 100%;
 }
@@ -284,15 +282,12 @@ body {
 .app-shot {
     width: 100%;
     height: 100%;
-    /* 'cover' ensures it fills the box without stretching */
     object-fit: cover;
-    /* Ensures the top of your UI (logo, nav) is always visible */
     object-position: top center;
     transition: transform 0.5s ease, filter 0.5s ease;
     filter: grayscale(20%);
 }
 
-/* Hover Effect: Zoom in slightly and brighten */
 .project-visual:hover .app-shot {
     transform: scale(1.03);
     filter: grayscale(0%);
@@ -326,29 +321,25 @@ body {
 
 /* MOBILE RESPONSIVENESS - REFINED */
 @media (max-width: 768px) {
-    /* 1. Tame the headline size */
     .headline { 
-        font-size: 3rem; /* Down from 5rem */
+        font-size: 3rem;
         line-height: 1.1;
     } 
     
-    /* 2. Allow the Hero to stack vertically */
     .hero-container { 
         flex-direction: column-reverse; 
         justify-content: center; 
         gap: 3rem; 
-        padding: 4rem 1.5rem; /* More top padding, tighter side padding */
+        padding: 4rem 1.5rem;
         min-height: auto; 
     }
 
-    /* 3. Resize the photo to look good on phone screens */
     .visual-wrapper { 
         height: 350px; 
         width: 100%; 
         max-width: 320px; 
     }
 
-    /* 4. Align text to left for readability */
     .content-wrapper { text-align: left; }
     
     .sub-headline { 
@@ -359,7 +350,6 @@ body {
         font-size: 1rem;
     }
 
-    /* 5. Fix the Systems Card layout for mobile */
     .project-card { 
         grid-template-columns: 1fr; 
         padding: 1.5rem; 
@@ -368,5 +358,12 @@ body {
 
     .systems-container {
         padding: 3rem 1.5rem; 
+    }
+
+    .footer-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+        align-items: center;
     }
 }
